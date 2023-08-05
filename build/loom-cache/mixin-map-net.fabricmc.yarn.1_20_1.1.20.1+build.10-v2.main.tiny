@@ -1,0 +1,4 @@
+v1	named	intermediary
+FIELD	z3roco01/inversePhantoms/mixin/PhantomSpawnerMixin	I	cooldown	field_13244
+FIELD	z3roco01/inversePhantoms/mixin/ServerWorldMixin	Ljava/util/List;	players	field_18261
+FIELD	z3roco01/inversePhantoms/mixin/ServerWorldMixin	Lnet/minecraft/world/level/ServerWorldProperties;	worldProperties	field_24456

@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "inverse_phantoms",
+    "version": "${version}",
+    "name": "Inverse Phantoms",
+    "description": "Inverses how phantoms work ",
+    "authors": [
+        "z3roco01"
+    ],
+    "contact": {
+    },
+    "license": "unlicense",
+    "icon": "assets/inverse_phantoms/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "z3roco01.inversePhantoms.InversePhantoms"
+        ]
+    },
+    "mixins": [
+        "inverse_phantoms.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${loader_version}",
+        "fabric": "*",
+        "minecraft": "${minecraft_version}"
+    }
+}
