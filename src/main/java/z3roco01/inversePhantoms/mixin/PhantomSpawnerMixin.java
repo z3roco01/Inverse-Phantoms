@@ -17,6 +17,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import z3roco01.inversePhantoms.SequentialSleepTracker;
 
 @Mixin(PhantomSpawner.class)
 public class PhantomSpawnerMixin {
@@ -51,8 +52,8 @@ public class PhantomSpawnerMixin {
             BlockPos playerPos = player.getBlockPos();
             if (world.getDimension().hasSkyLight() && (playerPos.getY() < world.getSeaLevel() || !world.isSkyVisible(playerPos)) || !(localDifficulty = world.getLocalDifficulty(playerPos)).isHarderThan(random.nextFloat() * 3.0f)) continue;
 
-            int sequentialSleeps = player.getStatHandler().getStat(net.minecraft.stat.Stats.CUSTOM.getOrCreateStat(Stats.SEQUENTIAL_SLEEPS));
-            int toSpawn = sequentialSleeps - 2;
+            long sequentialSleeps = ((SequentialSleepTracker)player).getSequentialSleeps();
+            long toSpawn = sequentialSleeps - 2;
 
             BlockPos spawnPos;
             if (!SpawnHelper.isClearForSpawn(world, spawnPos = playerPos.up(20 + random.nextInt(15)).east(-10 + random.nextInt(21)).south(-10 + random.nextInt(21)), world.getBlockState(spawnPos), world.getFluidState(spawnPos), EntityType.PHANTOM)) continue;
@@ -62,7 +63,7 @@ public class PhantomSpawnerMixin {
                 PhantomEntity phantomEntity = EntityType.PHANTOM.create(world);
                 if (phantomEntity == null) continue;
                 phantomEntity.refreshPositionAndAngles(spawnPos, 0.0f, 0.0f);
-                entityData = phantomEntity.initialize(world, localDifficulty, SpawnReason.NATURAL, entityData, null);
+                entityData = phantomEntity.initialize(world, localDifficulty, SpawnReason.NATURAL, entityData);
                 world.spawnEntityAndPassengers(phantomEntity);
                 ++spawned;
             }
