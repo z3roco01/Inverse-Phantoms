@@ -17,8 +17,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import z3roco01.inversePhantoms.InversePhantoms;
-import z3roco01.inversePhantoms.registry.Stats;
 
 @Mixin(PhantomSpawner.class)
 public class PhantomSpawnerMixin {

@@ -6,6 +6,6 @@ import static z3roco01.inversePhantoms.InversePhantoms.MOD_ID;
 
 public class IdUtil {
     public static Identifier mkId(String id) {
-        return new Identifier(MOD_ID, id);
+        return Identifier.of(MOD_ID, id);
     }
 }
